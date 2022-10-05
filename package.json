@@ -1,0 +1,17 @@
+{
+  "name": "taymyr-antora-ui",
+  "version": "1.0.0",
+  "description": "Taymyr Antora UI",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taymyr/taymyr-antora-ui.git"
+  },
+  "devDependencies": {
+    "favicons": "^7.0.1",
+    "favicons-webpack-plugin": "^6.0.0-alpha.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "zip-webpack-plugin": "^4.0.1"
+  }
+}
