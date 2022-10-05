@@ -1,2 +1,1 @@
-# taymyr-antora-ui
-Taymyr Antora UI
+# Taymyr Antora UI
