@@ -1,0 +1,19 @@
+name: Check
+
+on:
+  pull_request: # Check Pull Requests
+
+  push:
+    branches:
+      - main # Check branch after merge
+
+jobs:
+  check:
+    name: Check
+    uses: ./.github/workflows/bundle.yml
+
+  finish:
+    name: Finish
+    needs: # Should be last
+      - "check"
+    uses: taymyr/.github/.github/workflows/rtm.yml@v1
