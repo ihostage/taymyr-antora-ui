@@ -13,13 +13,14 @@ module.exports = {
     new HtmlPlugin({
       publicPath: 'uiRootPath',
       templateContent: ({htmlWebpackPlugin}) => `${faviconsTags(htmlWebpackPlugin)}`,
-      filename: 'partials/favicons.hbs',
+      filename: 'partials/head-icons.hbs',
       inject: false
     }),
     new FaviconsPlugin({
       logo: 'logo.svg',
       favicons: { appName: 'Taymyr' },
-      inject: htmlPlugin => basename(htmlPlugin.options.filename).endsWith('favicons.hbs')
+      prefix: 'assets/[contenthash]/',
+      inject: htmlPlugin => basename(htmlPlugin.options.filename).endsWith('head-icons.hbs')
     }),
     new CopyPlugin({
       patterns: [
