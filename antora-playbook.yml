@@ -1,0 +1,17 @@
+site:
+  title: Taymyr Antora UI
+  start_page: index.adoc
+content:
+  sources:
+    - url: ./
+      branches: HEAD
+      start_paths: docs
+ui:
+  bundle:
+    url: ./dist/ui-bundle.zip
+    snapshot: true
+  default_layout: docs
+
+antora:
+  extensions:
+    - require: '@antora/lunr-extension'

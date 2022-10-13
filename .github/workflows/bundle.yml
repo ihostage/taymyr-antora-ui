@@ -43,6 +43,9 @@ jobs:
       - name: Build bundle
         run: npx webpack
 
+      - name: Generate example
+        run: npx antora antora-playbook.yml
+
       - name: Upload bundle
         if: inputs.upload
         uses: actions/upload-artifact@v3
