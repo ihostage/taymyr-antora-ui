@@ -12,6 +12,10 @@ ui:
     snapshot: true
   default_layout: docs
 
+asciidoc:
+  attributes:
+    page-lang: 'ru'
+
 antora:
   extensions:
     - require: '@antora/lunr-extension'
