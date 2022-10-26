@@ -5,10 +5,19 @@ const ZipPlugin = require('zip-webpack-plugin');
 const FaviconsPlugin = require('favicons-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+
 
 module.exports = {
   mode: 'production',
+  // output: {
+  //   path: path.resolve(process.cwd(), 'dist')
+  // },
   plugins: [
+    // new CleanWebpackPlugin({
+    //   cleanOnceBeforeBuildPatterns: [path.resolve(process.cwd(), 'build/*'), path.resolve(process.cwd(), 'dist/*')]
+    // }),
     new ZipPlugin({ filename: bundleName }),
     new HtmlPlugin({
       publicPath: 'uiRootPath',
@@ -29,6 +38,9 @@ module.exports = {
       ]
     }),
   ],
+  devServer: {
+    static: './build/site/taymyr-antora-ui'
+  },
   performance: {
     assetFilter: (filename) => !filename.startsWith(bundleName)
   }
@@ -40,5 +52,5 @@ function faviconsTags(htmlWebpackPlugin) {
     .filter((tag) => tag.tagName !== 'script')
     .join('')
     // It must be Handlebars template with root path as variable
-    .replaceAll('uiRootPath', '{{{uiRootPath}}}')
+    .replace(/uiRootPath/g, '{{{uiRootPath}}}')
 }
