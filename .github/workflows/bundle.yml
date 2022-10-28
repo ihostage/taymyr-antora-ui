@@ -44,7 +44,9 @@ jobs:
         run: npx webpack
 
       - name: Generate example
-        run: npx antora antora-playbook.yml
+        run: |
+          npx antora antora-playbook-ru.yml
+          npx antora antora-playbook-en.yml
 
       - name: Upload bundle
         if: inputs.upload

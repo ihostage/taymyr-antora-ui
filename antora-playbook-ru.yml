@@ -1,0 +1,27 @@
+site:
+  title: Taymyr Antora UI
+  url: /ru
+  start_page: ROOT::index.adoc
+content:
+  sources:
+    - url: ./
+      branches: HEAD
+      start_paths: docs/ru
+ui:
+  bundle:
+    url: ./dist/ui-bundle.zip
+    snapshot: true
+  default_layout: docs
+
+asciidoc:
+  attributes:
+    page-lang: 'ru'
+
+output:
+  clean: false
+  dir: build/site/ru
+
+antora:
+  extensions:
+    - require: '@antora/lunr-extension'
+      languages: [ru]
