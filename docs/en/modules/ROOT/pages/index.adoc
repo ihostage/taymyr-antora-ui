@@ -1,0 +1,9 @@
+= Taymyr
+
+xref:section-1.adoc[Section 1 (internal link)]
+
+xref:ROOT:section-1.adoc[Section 1 (internal link with module name)]
+
+xref:ROOT::section-1.adoc[Section 1 (external link with component name)]
+
+xref:ROOT:ROOT:section-1.adoc[Section 1 (external link with component and module name)]
