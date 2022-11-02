@@ -1,0 +1,7 @@
+name: Sync labels
+on:
+  workflow_dispatch:
+
+jobs:
+  finish:
+    uses: taymyr/.github/.github/workflows/sync-labels.yml@v1
