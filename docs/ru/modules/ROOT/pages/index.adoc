@@ -1,9 +1,9 @@
 = Таймыр
 
-xref:section-1.adoc[Секция 1 (внутренняя ссылка)]
+xref:source-code.adoc[Секция 1 (внутренняя ссылка)]
 
-xref:ROOT:section-1.adoc[Секция 1 (внутренняя ссылка с именем модуля)]
+xref:ROOT:source-code.adoc[Секция 1 (внутренняя ссылка с именем модуля)]
 
-xref:ROOT::section-1.adoc[Секция 1 (внешняя ссылка с именем компоненты)]
+xref:ROOT::source-code.adoc[Секция 1 (внешняя ссылка с именем компоненты)]
 
-xref:ROOT:ROOT:section-1.adoc[Секция 1 (внешняя ссылка с именем компоненты и модуля)]
+xref:ROOT:ROOT:source-code.adoc[Секция 1 (внешняя ссылка с именем компоненты и модуля)]
