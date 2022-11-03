@@ -7,7 +7,10 @@ on:
         type: boolean
         required: false
         default: false
-
+      publish-pages:
+        type: boolean
+        required: false
+        default: false
 jobs:
   bundle:
     name: Bundle
@@ -54,3 +57,15 @@ jobs:
         with:
           name: ui-bundle
           path: dist/ui-bundle.zip
+
+      - name: Publish to GitHub Pages
+        if: github.event.repository.fork == false && inputs.publish-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/site
+          force_orphan: true
+          cname: antora-ui.taymyr.io
+          commit_message: "Deploy docs"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
