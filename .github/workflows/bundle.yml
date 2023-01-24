@@ -46,13 +46,8 @@ jobs:
       - name: Lint project
         run: npm run lint-project
 
-      - name: Build bundle
-        run: npx webpack
-
-      - name: Generate example
-        run: |
-          npx antora antora-playbook-ru.yml
-          npx antora antora-playbook-en.yml
+      - name: Build bundle and generate docs
+        run: npm run build
 
       - name: Upload bundle
         if: inputs.upload

@@ -1,6 +1,6 @@
 site:
   title: Taymyr Antora UI
-  url: /
+  url: /en
   start_page: ROOT::index.adoc
 content:
   sources:
@@ -15,7 +15,7 @@ ui:
 
 output:
   clean: false
-  dir: build/site
+  dir: build/site/en
 
 antora:
   extensions:
