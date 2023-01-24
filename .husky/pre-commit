@@ -1,0 +1,9 @@
+yarn lint-staged --allow-empty
+
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo -e "\033[0;31mLinting failed\033[0m"
+  exit 1
+fi
+
