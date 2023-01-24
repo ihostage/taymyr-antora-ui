@@ -8,8 +8,9 @@ import type { Configuration } from 'webpack'
 // @ts-ignore
 import ZipPlugin from 'zip-webpack-plugin'
 import { Env } from './constants/ENv'
-import { createHtmlPlugin } from './helpers/htmlPlugin'
+import { createHtmlPlugin, filterInjectingScriptByScriptNames } from './helpers/htmlPlugin'
 import { BuildAntoraPlugin } from './plugins/BuildAntoraPlugin'
+import { getDirectoryFileNames } from './helpers'
 
 const bundleName = 'ui-bundle'
 const HbsPartialsPath = {
@@ -17,9 +18,23 @@ const HbsPartialsPath = {
   HEAD_STYLES: 'partials/head-styles.hbs',
   BODY_ASSETS: 'partials/body-assets.hbs',
 }
+const buildingScripts = getDirectoryFileNames(path.resolve(Env.cwd, './src/scripts')).reduce<
+  Record<string, string>
+>((result, filePath) => {
+  const entryName = filePath.match(/\/(\w+).js$/)?.[1]
+
+  if (typeof entryName === 'string') {
+    result[entryName] = filePath
+  }
+
+  return result
+}, {})
 
 const config: Configuration = {
-  entry: path.resolve(Env.cwd, './src/index.ts'),
+  entry: {
+    main: path.resolve(Env.cwd, './src/index.ts'),
+    ...buildingScripts,
+  },
   module: {
     rules: [
       {
@@ -46,6 +61,7 @@ const config: Configuration = {
       fileName: HbsPartialsPath.BODY_ASSETS,
       filterKey: 'tagName',
       filterValue: 'script',
+      filterByTagNode: filterInjectingScriptByScriptNames(['highlight.js', 'main.js']),
     }),
     new CopyPlugin({
       patterns: [
