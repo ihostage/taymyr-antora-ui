@@ -43,6 +43,9 @@ jobs:
       - name: Install NPM dependencies
         run: npm ci --quiet --no-progress
 
+      - name: Lint project
+        run: npm run lint-project
+
       - name: Build bundle
         run: npx webpack
 
